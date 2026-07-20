@@ -1,0 +1,28 @@
+# 가상환경 / 캐시 / 산출물
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+output/
+
+# 개발 도구 / OS 부산물
+.omc/
+.claude/
+CLAUDE.md
+.DS_Store
+
+# 제출물 생성용 임시 도구 (PDF·캡쳐 렌더링은 폴더 밖에서 실행 - 제출물 아님)
+*.html
+gen_*.py
+make_*.py
+render_*.py
+*_capture*.py
+
+# 비밀정보 (API 키·환경변수 등) - 혹시 생겨도 커밋 방지
+.env
+.env.*
+*.key
+*.pem
+secrets.*
+credentials*.json

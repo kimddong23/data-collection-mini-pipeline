@@ -1,0 +1,10 @@
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+# E:오류 F:미사용 I:임포트정렬 UP:최신문법
+select = ["E", "F", "I", "UP"]
+
+[tool.pytest.ini_options]
+# tests/ 에서 프로젝트 루트 모듈(models 등)을 import 할 수 있게 함
+pythonpath = ["."]
