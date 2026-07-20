@@ -6,5 +6,5 @@ line-length = 88
 select = ["E", "F", "I", "UP"]
 
 [tool.pytest.ini_options]
-# tests/ 에서 프로젝트 루트 모듈(models 등)을 import 할 수 있게 함
+# tests/ 에서 루트의 pipeline 패키지를 import 할 수 있게 함
 pythonpath = ["."]

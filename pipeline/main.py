@@ -11,10 +11,11 @@
 2) build/validate : 필요한 필드 추출 후 Pydantic 모델로 타입·범위 검증
 3) save_and_benchmark() : CSV·Parquet 저장 + 성능 측정 결과 출력
 
-실행 : python main.py
+실행 : python -m pipeline.main
 
 변경 이력
 - 2026-07-20 최초 작성
+- 2026-07-20 패키지(pipeline/) 구조로 재구성
 """
 
 import asyncio
@@ -23,11 +24,12 @@ from pathlib import Path
 import httpx
 from pydantic import ValidationError
 
-from collector import collect_all
-from models import CountryInfo, IpInfo, WeatherHour
-from storage import save_and_benchmark
+from pipeline.collector import collect_all
+from pipeline.models import CountryInfo, IpInfo, WeatherHour
+from pipeline.storage import save_and_benchmark
 
-OUTPUT_DIR = Path(__file__).resolve().parent / "output"
+# 산출물은 레포 루트의 output/ 에 저장 (패키지 밖)
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
 
 
 def build_weather_records(weather_json: dict) -> list[dict]:
@@ -113,6 +115,6 @@ if __name__ == "__main__":
 #    국가 : Korea (Republic of) / 수도 Seoul / 인구 51,780,579
 #    IP 8.8.8.8 : United States/Ashburn (America/New_York)
 # 3) 저장/성능 비교 (weather 데이터):
-#    csv     | 쓰기  0.579ms | 읽기  0.212ms | 크기   1849B
-#    parquet | 쓰기  0.281ms | 읽기  0.412ms | 크기   3398B
+#    csv     | 쓰기  0.174ms | 읽기  0.198ms | 크기   1849B
+#    parquet | 쓰기  0.292ms | 읽기  0.417ms | 크기   3415B
 # 파이프라인 완료

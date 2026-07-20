@@ -9,7 +9,7 @@
 import pytest
 from pydantic import ValidationError
 
-from models import CountryInfo, IpInfo, WeatherHour
+from pipeline.models import CountryInfo, IpInfo, WeatherHour
 
 
 def test_weather_valid():
